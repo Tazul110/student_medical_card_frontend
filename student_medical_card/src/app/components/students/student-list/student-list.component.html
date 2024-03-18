@@ -1,0 +1,38 @@
+
+
+<div class="container">
+  <div class="row">     
+  </div>
+  <div class="container mt-4">
+    <h1 class="text-center mb-4">All Students</h1>
+  
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th >Title</th>
+            <th >Description</th>
+            <th >Created Date</th>
+            <th >Due Date</th>
+        
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of students">
+            <td>
+               <h5>{{ student.s_Id }}</h5>    
+            </td>
+            <td>{{ student.s_Dept }}</td>
+            <td>{{ student.s_Email }}</td>
+            <td>{{ student.s_Gender }}</td>
+            
+              
+              
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+</div>
+
