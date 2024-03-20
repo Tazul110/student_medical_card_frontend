@@ -13,9 +13,7 @@ export class StudentListComponent implements OnInit{
 constructor(private studentService: StudentService){}
 
  ngOnInit(): void {
-//   this.getAllStudent();
-//  }
-//  getAllStudent(){
+
    this.studentService.getAllStudent()
      .subscribe({
       next:(students)=>{

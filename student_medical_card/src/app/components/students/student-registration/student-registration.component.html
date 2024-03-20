@@ -1,0 +1,41 @@
+
+
+<div class="container">
+    <h1>Student Information Form</h1>
+    <form #employeeForm="ngForm" (ngSubmit)="saveStudent()">
+        <div class="form-group">
+            <label for="studentId">Student ID</label>
+            <input id="studentId" name="studentId" [(ngModel)]="sRegistration.s_Id"  type="text" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="studentName">Student Name</label>
+            <input type="text" id="studentName" name="studentName" [(ngModel)]="sRegistration.s_Name" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="department">Department</label>
+            <input type="text" id="department" name="department" [(ngModel)]="sRegistration.s_Dept" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <input type="text" id="gendert" name="gender" [(ngModel)]="sRegistration.s_Gender" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="dateOfBirth">Date of Birth</label>
+            <input type="date" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="sRegistration.b_Date" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="studentEmail">Student Email</label>
+            <input type="email" id="studentEmail" name="studentEmail" [(ngModel)]="sRegistration.s_Email" class="form-control" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+
+{{employeeForm.value | json}}
