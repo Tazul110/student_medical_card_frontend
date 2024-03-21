@@ -15,13 +15,13 @@ export class StudentService {
   //constructor(private http: HttpClient, private router: Router) { } //this is use for navigate page 
 
   getAllStudent(): Observable<Student[]>{
-    return this.http.get<any>(`${this.baseApiUrl}/api/GetAll_Students`).pipe(
+    return this.http.get<any>(`${this.baseApiUrl}/api/Student/Getall`).pipe(
       map(response => response.listStudent)
     );
   }
 
   saveStudent(sRegistration: Student): Observable<Student> {
-    return this.http.post<Student>(this.baseApiUrl + '/api/s_add/AddStudent', sRegistration);
+    return this.http.post<Student>(this.baseApiUrl + '/api/Student/AddStudent', sRegistration);
     
   }
                        // for navigate another page//
@@ -38,7 +38,9 @@ export class StudentService {
   //     );
   // }
 
-
+  getStudentById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseApiUrl}/api/Student/GetById/${id}`);
+  }
 
   
      

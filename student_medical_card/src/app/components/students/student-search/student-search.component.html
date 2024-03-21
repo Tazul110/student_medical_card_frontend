@@ -1,0 +1,57 @@
+
+<div class="container">
+    <h2>Search Student</h2>
+    <form class="search-form" (ngSubmit)="search()">
+      <label for="studentId">Enter Student ID:</label>
+      <input type="text" id="studentId" name="studentId" [(ngModel)]="studentId">
+      <button type="submit">Search</button>
+    </form>
+    <div *ngIf="studentById" class="student-details">
+      <h3>Student Details</h3>
+      <div class="detail">
+        <p><strong>ID:</strong> {{ studentById.s_Id }}</p>
+        <p><strong>Name:</strong> {{ studentById.s_Name }}</p>
+        <p><strong>Dept:</strong> {{ studentById.s_Dept }}</p>
+        <p><strong>Email:</strong> {{ studentById.s_Email }}</p>
+        <p><strong>Birth_date:</strong> {{ studentById.b_Date }}</p>
+      </div>
+
+      <h3>Prescriptions</h3>
+      <div *ngFor="let prescription of studentById.listPrescription" class="prescription">
+         <div class="prescription-card">
+             <div class="prescription-detail">
+               <p><strong>Prescription ID:</strong> {{ prescription.p_Id }}</p>
+               <p><strong>Health Condition:</strong> {{ prescription.health_condition }}</p>
+               <p><strong>Prescribed By:</strong> {{ prescription.prescribeBy }}</p>
+               <p><strong>Prescribe Date Time:</strong> {{ prescription.prescribe_date_time }}</p>
+             </div>
+           
+             <table class="medicine-table">
+               <thead>
+                 <tr>
+                   <th>Medicine ID</th>
+                   <th>Medicine Name</th>
+                   <th>Medicine Type</th>
+                   <th>Consumption Rule</th>
+                   <th>Days</th>
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr *ngFor="let medicine of prescription.listMedicine" class="medicine">
+                   <td>{{ medicine.m_Id }}</td>
+                   <td>{{ medicine.m_Name }}</td>
+                   <td>{{ medicine.m_Type }}</td>
+                   <td>{{ medicine.consumption_Rule }}</td>
+                   <td>{{ medicine.m_Days }}</td>
+                 </tr>
+               </tbody>
+             </table>
+           </div>
+           
+        <div *ngIf="!prescription.listMedicine || prescription.listMedicine.length === 0" class="no-medicine">
+          <p>No medicines prescribed</p>
+        </div>
+      </div>
+    </div>
+  </div>
+

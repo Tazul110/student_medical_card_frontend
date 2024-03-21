@@ -3,12 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { StudentListComponent } from './components/students/student-list/student-list.component';
 import { HomePageComponent } from './components/Home/home-page/home-page.component';
 import { StudentRegistrationComponent } from './components/students/student-registration/student-registration.component';
+import { UserResistrationComponent } from './components/users/user-resistration/user-resistration.component';
+import { StudentSearchComponent } from './components/students/student-search/student-search.component';
+
 
 const routes: Routes = [
-{
-  path: '',
-  component:StudentListComponent
-},
+
 {
   path:'home',
   component:HomePageComponent
@@ -16,6 +16,18 @@ const routes: Routes = [
 {
   path:'sRegistration',
   component:StudentRegistrationComponent
+},
+{
+  path:'us',
+  component:UserResistrationComponent
+},
+{
+  path: '',
+  component:StudentListComponent
+},
+{
+  path:'sea',
+  component:StudentSearchComponent
 }
 ];
 

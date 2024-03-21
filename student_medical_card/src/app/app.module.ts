@@ -8,6 +8,8 @@ import { HomePageComponent } from './components/Home/home-page/home-page.compone
 import { StudentRegistrationComponent } from './components/students/student-registration/student-registration.component';
 import { FormsModule } from '@angular/forms';
 import { UserResistrationComponent } from './components/users/user-resistration/user-resistration.component';
+import { StudentSearchComponent } from './components/students/student-search/student-search.component';
+
 
 
 @NgModule({
@@ -17,7 +19,7 @@ import { UserResistrationComponent } from './components/users/user-resistration/
     HomePageComponent,
     StudentRegistrationComponent,
     UserResistrationComponent,
-    
+    StudentSearchComponent,  
   ],
   imports: [
     BrowserModule,
