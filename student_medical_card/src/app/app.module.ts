@@ -9,6 +9,7 @@ import { StudentRegistrationComponent } from './components/students/student-regi
 import { FormsModule } from '@angular/forms';
 import { UserResistrationComponent } from './components/users/user-resistration/user-resistration.component';
 import { StudentSearchComponent } from './components/students/student-search/student-search.component';
+import { LogInComponent } from './components/LogIn/log-in/log-in.component';
 
 
 
@@ -19,7 +20,8 @@ import { StudentSearchComponent } from './components/students/student-search/stu
     HomePageComponent,
     StudentRegistrationComponent,
     UserResistrationComponent,
-    StudentSearchComponent,  
+    StudentSearchComponent,
+    LogInComponent,  
   ],
   imports: [
     BrowserModule,

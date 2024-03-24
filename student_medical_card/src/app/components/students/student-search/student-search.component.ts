@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { StudentService } from '../../../services/student.service';
-import { response } from 'express';
-import { error } from 'console';
+
 
 @Component({
   selector: 'app-student-search',
@@ -21,8 +20,8 @@ export class StudentSearchComponent {
 
   search() {
     if (this.studentId) {
-      debugger;
-      console.log(this.studentId);
+      //debugger;
+      //console.log(this.studentId);
       this.studentService.getStudentById(this.studentId)
         .subscribe(student => {
           console.log(student);

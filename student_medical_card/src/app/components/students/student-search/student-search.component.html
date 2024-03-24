@@ -19,11 +19,11 @@
       <h3>Prescriptions</h3>
       <div *ngFor="let prescription of studentById.listPrescription" class="prescription">
          <div class="prescription-card">
-             <div class="prescription-detail">
-               <p><strong>Prescription ID:</strong> {{ prescription.p_Id }}</p>
-               <p><strong>Health Condition:</strong> {{ prescription.health_condition }}</p>
-               <p><strong>Prescribed By:</strong> {{ prescription.prescribeBy }}</p>
-               <p><strong>Prescribe Date Time:</strong> {{ prescription.prescribe_date_time }}</p>
+             <div class="">
+               <p><strong >Prescription ID:</strong> {{ prescription.p_Id }}</p>
+               <p><strong style="color: green;">Health Condition:</strong> {{ prescription.health_condition }}</p>
+               <!-- <p><strong>Prescribed By:</strong> {{ prescription.prescribeBy }}</p> -->
+               <!-- <p><strong>Prescribe Date Time:</strong> {{ prescription.prescribe_date_time }}</p> -->
              </div>
            
              <table class="medicine-table">
@@ -46,6 +46,9 @@
                  </tr>
                </tbody>
              </table>
+             <p><strong>Prescribed By:</strong> {{ prescription.prescribeBy }}</p>
+             <p style="text-align: center;"><strong>Prescribed Date :</strong> {{ prescription.prescribe_date_time | date:'MM/dd/yyyy'}}</p>
+
            </div>
            
         <div *ngIf="!prescription.listMedicine || prescription.listMedicine.length === 0" class="no-medicine">

@@ -6,3 +6,9 @@ export interface Student {
     s_Email: string,
     b_Date:Date
 }
+
+export interface User {
+    userEmail: string,
+    userPassword:string,
+    userName: string
+}
