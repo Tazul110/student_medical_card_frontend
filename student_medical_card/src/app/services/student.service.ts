@@ -51,6 +51,12 @@ export class StudentService {
   }
 
 
+  saveUser(user: User): Observable<User> {
+    return this.http.post<User>(this.baseApiUrl + '/api/Login/addUser', user);
+    
+  }
+
+
   
      
 }

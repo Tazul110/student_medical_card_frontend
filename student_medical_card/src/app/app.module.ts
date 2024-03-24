@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { UserResistrationComponent } from './components/users/user-resistration/user-resistration.component';
 import { StudentSearchComponent } from './components/students/student-search/student-search.component';
 import { LogInComponent } from './components/LogIn/log-in/log-in.component';
+import { ExampleComponent } from './components/Home/home-page/example/example.component';
+import { SignUpComponent } from './components/LogIn/sign-up/sign-up.component';
 
 
 
@@ -21,7 +23,9 @@ import { LogInComponent } from './components/LogIn/log-in/log-in.component';
     StudentRegistrationComponent,
     UserResistrationComponent,
     StudentSearchComponent,
-    LogInComponent,  
+    LogInComponent,
+    ExampleComponent,
+    SignUpComponent,  
   ],
   imports: [
     BrowserModule,
