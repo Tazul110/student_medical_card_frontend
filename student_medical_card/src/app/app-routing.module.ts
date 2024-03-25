@@ -9,7 +9,7 @@ import { LogInComponent } from './components/LogIn/log-in/log-in.component';
 import { SignUpComponent } from './components/LogIn/sign-up/sign-up.component';
 
 
-const routes: Routes = [
+export const routes: Routes = [
 
 {
   path:'home',
@@ -24,8 +24,13 @@ const routes: Routes = [
   component:UserResistrationComponent
 },
 {
-  path: '',
+  
+  path:'allstudent',
   component:StudentListComponent
+},
+{
+  path: '',
+  component:LogInComponent
 },
 {
   path:'sea',

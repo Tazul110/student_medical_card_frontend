@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Student } from '../../../Models/student.model';
 import { StudentService } from '../../../services/student.service';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-registration',
@@ -21,21 +22,28 @@ export class StudentRegistrationComponent implements OnInit{
     b_Date:new Date()
   };
   
-  constructor(private studentService: StudentService){}
+  @ViewChild('studentForm') studentForm!: NgForm;
 
-    ngOnInit(): void {
-      
+  constructor(private studentService: StudentService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.checkToken();
+  }
+
+  checkToken() {
+    const token = localStorage.getItem('angular17token') ?? '';
+    if (!token) {
+      this.router.navigate(['/login']);
     }
+  }
 
-    @ViewChild('employeeForm') employeeForm!: NgForm;
-    saveStudent()
-      {
-        this.studentService.saveStudent(this.sRegistration)
-        .subscribe({
-          next: (student)=>{
-            this.employeeForm.resetForm();
-          }
-        })
-      }
-
+  saveStudent() {
+    this.studentService.saveStudent(this.sRegistration)
+      .subscribe({
+        next: (student) => {
+          alert("Student registration successful");
+          this.studentForm.resetForm();
+        }
+      });
+  }
 }

@@ -7,24 +7,23 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/home">Home</a>
+          <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/sRegistration">Student Registration</a>
+          <a class="nav-link" routerLink="/sRegistration" routerLinkActive="active">Student Registration</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">All Students</a>
+          <a class="nav-link" routerLink="/allstudent" routerLinkActive="active">All Students</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/sea">search</a>
+          <a class="nav-link" routerLink="/sea" routerLinkActive="active">Search</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/login">LogIn</a>
+          <a class="nav-link" routerLink="/login" routerLinkActive="active">Log In</a>
         </li>
       </ul>
       <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-outline-danger" type="submit" (click)="onLogout()">Log Out</button>
       </form>
     </div>
   </div>

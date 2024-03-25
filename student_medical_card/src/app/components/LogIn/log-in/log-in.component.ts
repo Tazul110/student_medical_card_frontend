@@ -19,6 +19,7 @@ export class LogInComponent {
   constructor(private studentService: StudentService, private router: Router) {}
 
   onLogin() {
+    
     console.log(this.user.userEmail);
     console.log(this.user.userPassword);
 
@@ -27,8 +28,10 @@ export class LogInComponent {
         student => {
           console.log(student);
           if (student) {
+            alert("Loged In successfully....");
+            localStorage.setItem('angular17token',student.token)
             // Redirect to '/home' if login successful
-            this.router.navigate(['/home']);
+            this.router.navigate(['/allstudent']);
           } else {
             alert("Not Found");
           }
@@ -38,4 +41,5 @@ export class LogInComponent {
         }
       );
   }
+
 }

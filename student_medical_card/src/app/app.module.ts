@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StudentListComponent } from './components/students/student-list/student-list.component';
@@ -12,8 +12,9 @@ import { StudentSearchComponent } from './components/students/student-search/stu
 import { LogInComponent } from './components/LogIn/log-in/log-in.component';
 import { ExampleComponent } from './components/Home/home-page/example/example.component';
 import { SignUpComponent } from './components/LogIn/sign-up/sign-up.component';
-
-
+import { RouterModule, provideRouter } from '@angular/router';
+import { routes } from './app-routing.module';
+import { customInterceptor } from './services/custom.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,11 +32,11 @@ import { SignUpComponent } from './components/LogIn/sign-up/sign-up.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [
-    provideClientHydration()
-  ],
+
+    providers: [provideRouter(routes),provideHttpClient(withInterceptors([customInterceptor]))],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

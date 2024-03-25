@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../../../Models/student.model';
 import { StudentService } from '../../../services/student.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-list',
@@ -10,17 +11,24 @@ import { StudentService } from '../../../services/student.service';
 export class StudentListComponent implements OnInit{
 
  students : Student[]=[];
-constructor(private studentService: StudentService){}
+constructor(private studentService: StudentService, private router: Router){}
 
- ngOnInit(): void {
 
-   this.studentService.getAllStudent()
-     .subscribe({
-      next:(students)=>{
-        this.students=students;
-        console.log(students);
-      }
-     })
- }
+ngOnInit(): void {
+  const token = localStorage.getItem('angular17token') ?? '';
   
+
+  if (!token) {
+    this.router.navigate(['/login']);
+  } else {
+  this.studentService.getAllStudent()
+    .subscribe({
+     next:(students)=>{
+       this.students=students;
+       console.log(students);
+     }
+    })
+}
+ 
+}
 }
