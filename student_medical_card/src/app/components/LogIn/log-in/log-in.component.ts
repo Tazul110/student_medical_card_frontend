@@ -1,12 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { StudentService } from '../../../services/student.service';
 import { User } from '../../../Models/student.model';
-import { Router } from '@angular/router'; // Import Router from @angular/router
+import { Router } from '@angular/router'; 
+import { NgForm } from '@angular/forms';
+import {  OnInit, } from '@angular/core';
+
+
+
+
 
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
-  styleUrls: ['./log-in.component.css'] // Fix the property name to styleUrls
+  styleUrls: ['./log-in.component.css'] 
 })
 export class LogInComponent {
   
@@ -16,10 +22,25 @@ export class LogInComponent {
     userName:''
   };
 
-  constructor(private studentService: StudentService, private router: Router) {}
+ 
+
+  constructor(private studentService:StudentService, private renderer: Renderer2, private el: ElementRef,private router: Router) { }
+
+  ngAfterViewInit() {
+    const container = this.el.nativeElement.querySelector('.container');
+    const registerBtn = this.el.nativeElement.querySelector('#register');
+    const loginBtn = this.el.nativeElement.querySelector('#login');
+
+    registerBtn.addEventListener('click', () => {
+      this.renderer.addClass(container, 'active');
+    });
+
+    loginBtn.addEventListener('click', () => {
+      this.renderer.removeClass(container, 'active');
+    });
+  }
 
   onLogin() {
-    
     console.log(this.user.userEmail);
     console.log(this.user.userPassword);
 
@@ -28,9 +49,8 @@ export class LogInComponent {
         student => {
           console.log(student);
           if (student) {
-            alert("Loged In successfully....");
-            localStorage.setItem('angular17token',student.token)
-            // Redirect to '/home' if login successful
+            alert("Logged In successfully....");
+            localStorage.setItem('angular17token', student.token)
             this.router.navigate(['/allstudent']);
           } else {
             alert("Not Found");
@@ -42,4 +62,28 @@ export class LogInComponent {
       );
   }
 
+  @ViewChild('userForm') userForm!: NgForm;
+
+  onSignUp() {
+    this.studentService.saveUser(this.user)
+    .subscribe({
+      next: (student) => {
+
+        this.userForm.resetForm();
+        alert("sign up successfully");
+      }
+    });
+  }
+
+  // Function to toggle between sign-in and sign-up forms
+  toggleSignForm(form: string) {
+    const container = document.getElementById('container') as HTMLElement;
+    if (form === 'sign-in') {
+      container.classList.remove('active');
+    } else {
+      container.classList.add('active');
+    }
+  }
+  
+  
 }

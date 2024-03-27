@@ -6,7 +6,6 @@ import { StudentRegistrationComponent } from './components/students/student-regi
 import { UserResistrationComponent } from './components/users/user-resistration/user-resistration.component';
 import { StudentSearchComponent } from './components/students/student-search/student-search.component';
 import { LogInComponent } from './components/LogIn/log-in/log-in.component';
-import { SignUpComponent } from './components/LogIn/sign-up/sign-up.component';
 
 
 export const routes: Routes = [
@@ -39,10 +38,6 @@ export const routes: Routes = [
 {
   path:'login',
   component:LogInComponent
-},
-{
-  path:'signup',
-  component:SignUpComponent
 }
 ];
 

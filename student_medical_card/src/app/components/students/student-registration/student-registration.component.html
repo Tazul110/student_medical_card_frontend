@@ -5,6 +5,7 @@
                 <h1 class="card-header text-center">Student Information Form</h1>
                 <div class="card-body">
                     <form #studentForm="ngForm" (ngSubmit)="saveStudent()">
+                        
                         <div class="form-group">
                             <label for="studentId">Student ID</label>
                             <input id="studentId" name="studentId" [(ngModel)]="sRegistration.s_Id" type="text" class="form-control" required>

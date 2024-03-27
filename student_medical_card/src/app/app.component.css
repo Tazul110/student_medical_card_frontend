@@ -2,3 +2,7 @@
     background-color: #f8f9fa;
     font-family: Arial, sans-serif;
 }
+
+.hide-navbar {
+    display: none;
+  }

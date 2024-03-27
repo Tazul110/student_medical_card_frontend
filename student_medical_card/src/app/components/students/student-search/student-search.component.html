@@ -3,11 +3,13 @@
     <h2>Search Student</h2>
     <!-- //<form class="search-form" #searchForm="ngForm" (ngSubmit)="search()"> -->
     <form class="search-form" #searchForm="ngForm" (ngSubmit)="search()">
-
       <label for="studentId">Enter Student ID:</label>
       <input type="text" id="studentId" name="studentId" [(ngModel)]="studentId">
       <button type="submit">Search</button>
     </form>
+
+
+
     <div *ngIf="studentById" class="student-details">
       <h3>Student Details</h3>
       <div class="detail">

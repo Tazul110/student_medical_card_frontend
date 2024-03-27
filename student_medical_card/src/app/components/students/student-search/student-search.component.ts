@@ -8,24 +8,13 @@ import { NgForm } from '@angular/forms';
   templateUrl: './student-search.component.html',
   styleUrls: ['./student-search.component.css']
 })
-export class StudentSearchComponent implements OnInit {
+export class StudentSearchComponent {
   studentId!: number;
   studentById: any = null; // Initialize studentById to null
 
   @ViewChild('searchForm') searchForm!: NgForm;
 
   constructor(private studentService: StudentService, private router: Router) {}
-
-  ngOnInit(): void {
-    this.checkToken();
-  }
-
-  checkToken() {
-    const token = localStorage.getItem('angular17token') ?? '';
-    if (!token) {
-      this.router.navigate(['/login']);
-    }
-  }
 
   search() {
     this.studentById = null; // Reset studentById before each search
@@ -35,6 +24,7 @@ export class StudentSearchComponent implements OnInit {
           student => {
             if (student) {
               this.studentById = student;
+              this.searchForm.resetForm();
             } else {
               alert("Not Found");
             }

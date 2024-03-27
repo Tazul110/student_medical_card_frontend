@@ -15,20 +15,13 @@ constructor(private studentService: StudentService, private router: Router){}
 
 
 ngOnInit(): void {
-  const token = localStorage.getItem('angular17token') ?? '';
-  
-
-  if (!token) {
-    this.router.navigate(['/login']);
-  } else {
+ 
   this.studentService.getAllStudent()
     .subscribe({
      next:(students)=>{
        this.students=students;
        console.log(students);
      }
-    })
-}
- 
+    }) 
 }
 }

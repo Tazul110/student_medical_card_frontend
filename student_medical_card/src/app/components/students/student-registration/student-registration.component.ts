@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './student-registration.component.html',
   styleUrl: './student-registration.component.css'
 })
-export class StudentRegistrationComponent implements OnInit{
+export class StudentRegistrationComponent {
   [x: string]: any;
     
   sRegistration : Student=
@@ -26,16 +26,6 @@ export class StudentRegistrationComponent implements OnInit{
 
   constructor(private studentService: StudentService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.checkToken();
-  }
-
-  checkToken() {
-    const token = localStorage.getItem('angular17token') ?? '';
-    if (!token) {
-      this.router.navigate(['/login']);
-    }
-  }
 
   saveStudent() {
     this.studentService.saveStudent(this.sRegistration)
