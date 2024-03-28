@@ -17,6 +17,13 @@ export class StudentSearchComponent {
   constructor(private studentService: StudentService, private router: Router) {}
 
   search() {
+
+//     const loggedInStudent = localStorage.getItem('angular17token');
+// if (loggedInStudent) {
+//   const student = JSON.parse(loggedInStudent);
+//   console.log(student.userName);
+// }
+  
     this.studentById = null; // Reset studentById before each search
     if (this.studentId) {
       this.studentService.getStudentById(this.studentId)
@@ -31,6 +38,7 @@ export class StudentSearchComponent {
           },
           error => {
             alert("Student not found");
+            this.searchForm.resetForm();
           }
         );
     } else {

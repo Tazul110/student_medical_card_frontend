@@ -3,7 +3,6 @@ import { StudentService } from '../../../services/student.service';
 import { User } from '../../../Models/student.model';
 import { Router } from '@angular/router'; 
 import { NgForm } from '@angular/forms';
-import {  OnInit, } from '@angular/core';
 
 
 
@@ -22,7 +21,6 @@ export class LogInComponent {
     userName:''
   };
 
- 
 
   constructor(private studentService:StudentService, private renderer: Renderer2, private el: ElementRef,private router: Router) { }
 
@@ -41,17 +39,20 @@ export class LogInComponent {
   }
 
   onLogin() {
-    console.log(this.user.userEmail);
-    console.log(this.user.userPassword);
-
+     //console.log(this.user.userEmail);
+     //console.log(this.user.userPassword);
+   
     this.studentService.onLoginServ(this.user)
       .subscribe(
         student => {
-          console.log(student);
           if (student) {
+            //console.log(student.userName);
             alert("Logged In successfully....");
-            localStorage.setItem('angular17token', student.token)
+            //localStorage.setItem('angular17token', student.token)
+            localStorage.setItem('angular17token', JSON.stringify(student));
+            
             this.router.navigate(['/allstudent']);
+            
           } else {
             alert("Not Found");
           }
@@ -65,7 +66,8 @@ export class LogInComponent {
   @ViewChild('userForm') userForm!: NgForm;
 
   onSignUp() {
-    this.studentService.saveUser(this.user)
+    if(this.user.userName&&this.user.userEmail&&this.user.userPassword)
+    {this.studentService.saveUser(this.user)
     .subscribe({
       next: (student) => {
 
@@ -74,16 +76,21 @@ export class LogInComponent {
       }
     });
   }
+  else
+  {
+    alert("Something error...Try again");
+  }
+}
 
   // Function to toggle between sign-in and sign-up forms
-  toggleSignForm(form: string) {
-    const container = document.getElementById('container') as HTMLElement;
-    if (form === 'sign-in') {
-      container.classList.remove('active');
-    } else {
-      container.classList.add('active');
-    }
-  }
+  // toggleSignForm(form: string) {
+  //   const container = document.getElementById('container') as HTMLElement;
+  //   if (form === 'sign-in') {
+  //     container.classList.remove('active');
+  //   } else {
+  //     container.classList.add('active');
+  //   }
+  // }
   
   
 }
