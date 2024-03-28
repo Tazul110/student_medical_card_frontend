@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map, tap } from 'rxjs';
 import { Student, User } from '../Models/student.model';
+import { Medicine } from '../Models/Medicine.Model';
+import { Prescription } from '../Models/Prescription.Model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +25,17 @@ export class StudentService {
 
   saveStudent(sRegistration: Student): Observable<Student> {
     return this.http.post<Student>(this.baseApiUrl + '/api/Student/AddStudent', sRegistration);
+    
+  }
+
+  
+  saveMedicine(mRegistration: Medicine): Observable<Medicine> {
+    return this.http.post<Medicine>(this.baseApiUrl + '/api/Prescription/AddMedicine', mRegistration);
+    
+  }
+
+  savePrescription(pRegistration: Prescription): Observable<Prescription> {
+    return this.http.post<Prescription>(this.baseApiUrl + '/api/Prescription/AddPrescription', pRegistration);
     
   }
                        // for navigate another page//

@@ -1,17 +1,21 @@
-<div class="container">
-  <h1 class="text-center mb-4">All Students</h1>
-  <div class="row">
-    <div class="col-md-4 mb-4" *ngFor="let student of students">
-      <div class="card custom-card">
-        <div class="card-body">
-          <h5 class="card-title">{{ student.s_Name }}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">ID: {{ student.s_Id }}</h6>
-          <p class="card-text">Department: {{ student.s_Dept }}</p>
-          <p class="card-text">Gender: {{ student.s_Gender }}</p>
-          <p class="card-text">Email: {{ student.s_Email }}</p>
-          <p class="card-text">Birth Date: {{ student.b_Date | date:'MM/dd/yyyy' }}</p>
+<body style="background-color: #c9d6ff; min-height: 100vh;">
+  <div class="container">
+    <h1 class="text-center mb-4">All Students</h1>
+    <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let student of students">
+        <div class="card custom-card">
+          <div class="card-body">
+            <h5 class="card-title">{{ student.s_Name }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">ID: {{ student.s_Id }}</h6>
+            <p class="card-text">Department: {{ student.s_Dept }}</p>
+            <p class="card-text">Gender: {{ student.s_Gender }}</p>
+            <p class="card-text">Email: {{ student.s_Email }}</p>
+            <p class="card-text">Birth Date: {{ student.b_Date | date:'MM/dd/yyyy' }}</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+  
+</body>
+

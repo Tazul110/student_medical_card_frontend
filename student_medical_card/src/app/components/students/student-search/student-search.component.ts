@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { StudentService } from '../../../services/student.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -8,22 +8,25 @@ import { NgForm } from '@angular/forms';
   templateUrl: './student-search.component.html',
   styleUrls: ['./student-search.component.css']
 })
-export class StudentSearchComponent {
-  studentId!: number;
-  studentById: any = null; // Initialize studentById to null
+export class StudentSearchComponent implements OnInit {
+  studentId: number | null = null; // Declare studentId property
+  studentById: any = null;
+
+  constructor(private studentService: StudentService, private router: Router, private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    // Read studentId from query parameters when component initializes
+    this.route.queryParams.subscribe(params => {
+      this.studentId = +params['studentId'] || null;
+      if (this.studentId) {
+        this.search();
+      }
+    });
+  }
 
   @ViewChild('searchForm') searchForm!: NgForm;
-
-  constructor(private studentService: StudentService, private router: Router) {}
-
   search() {
-
-//     const loggedInStudent = localStorage.getItem('angular17token');
-// if (loggedInStudent) {
-//   const student = JSON.parse(loggedInStudent);
-//   console.log(student.userName);
-// }
-  
+    console.log("in S-search class")
     this.studentById = null; // Reset studentById before each search
     if (this.studentId) {
       this.studentService.getStudentById(this.studentId)
@@ -38,11 +41,36 @@ export class StudentSearchComponent {
           },
           error => {
             alert("Student not found");
-            this.searchForm.resetForm();
           }
         );
     } else {
       alert("Please enter a student ID"); // Provide feedback if no student ID is entered
+    }
+  }
+
+  
+  addMedicine(prescriptionId: number) {
+    // Implement your logic here for adding medicine
+    console.log('Add medicine button clicked for prescription ID:', prescriptionId);
+    if (prescriptionId) {
+      
+      // Navigate to '/sea' with studentId as a query parameter
+      this.router.navigate(['/medicine'], { queryParams: { prescriptionId: prescriptionId }});
+    } else {
+      alert("Please enter a prescriptionId"); // Provide feedback if no student ID is entered
+    }
+  }
+
+  addPrescription(id:number)
+  {
+    
+    if (id) {
+      
+      // Navigate to '/sea' with studentId as a query parameter
+      this.router.navigate(['/prescription'], { queryParams: { s_Id: id }});
+      
+    } else {
+      alert("Somethings error"); // Provide feedback if no student ID is entered
     }
   }
 }

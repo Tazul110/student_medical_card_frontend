@@ -51,7 +51,7 @@ export class LogInComponent {
             //localStorage.setItem('angular17token', student.token)
             localStorage.setItem('angular17token', JSON.stringify(student));
             
-            this.router.navigate(['/allstudent']);
+            this.router.navigate(['/home']);
             
           } else {
             alert("Not Found");

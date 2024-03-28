@@ -1,12 +1,14 @@
 
-<div class="container">
-    <h2>Search Student</h2>
+
+<body  style="background-color: #c9d6ff; min-height: 100vh;">
+  <div class="container">
+    <!-- <h2>Search Student</h2> -->
     <!-- //<form class="search-form" #searchForm="ngForm" (ngSubmit)="search()"> -->
-    <form class="search-form" #searchForm="ngForm" (ngSubmit)="search()">
+    <!-- <form class="search-form" #searchForm="ngForm" (ngSubmit)="search()">
       <label for="studentId">Enter Student ID:</label>
       <input type="text" id="studentId" name="studentId" [(ngModel)]="studentId">
       <button type="submit">Search</button>
-    </form>
+    </form> -->
 
 
 
@@ -19,6 +21,10 @@
         <p><strong>Email:</strong> {{ studentById.s_Email }}</p>
         <p><strong>Birth_date:</strong> {{ studentById.b_Date }}</p>
       </div>
+
+      <button class="add-button" (click)="addPrescription(studentById.s_Id)">
+        +
+      </button>
 
       <h3>Prescriptions</h3>
       <div *ngFor="let prescription of studentById.listPrescription" class="prescription">
@@ -49,7 +55,10 @@
                    <td>{{ medicine.m_Days }}</td>
                  </tr>
                </tbody>
+               
              </table>
+             <button type="button" class="btn btn-success" (click)="addMedicine(prescription.p_Id)"><span>+</span></button>
+
              <p><strong>Prescribed By:</strong> {{ prescription.prescribeBy }}</p>
              <p style="text-align: center;"><strong>Prescribed Date :</strong> {{ prescription.prescribe_date_time | date:'MM/dd/yyyy'}}</p>
 
@@ -62,3 +71,5 @@
     </div>
   </div>
 
+  
+</body>

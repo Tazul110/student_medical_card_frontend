@@ -14,6 +14,8 @@ import { ExampleComponent } from './components/Home/home-page/example/example.co
 import { RouterModule, provideRouter } from '@angular/router';
 import { routes } from './app-routing.module';
 import { customInterceptor } from './services/custom.interceptor';
+import { AddPrescriptionComponent } from './components/Doctor/add-prescription/add-prescription.component';
+import { AddMedicineComponent } from './components/Doctor/add-medicine/add-medicine.component';
 
 
 @NgModule({
@@ -26,6 +28,8 @@ import { customInterceptor } from './services/custom.interceptor';
     StudentSearchComponent,
     LogInComponent,
     ExampleComponent,
+    AddPrescriptionComponent,
+    AddMedicineComponent,
   
      
   ],
