@@ -13,41 +13,45 @@ import { NgForm } from '@angular/forms';
 export class AddMedicineComponent implements OnInit {
   p1_Id: number | null = null; // Declare prescriptionId property
 
-  mRegistration : Medicine=
-  {
-    p_Id: 0,
-    m_Name: '',
-    m_Type: '',
-    consumption_Rule: '',
-    m_Days: 0,
-  };
-  
-  constructor(private studentService: StudentService, private router: Router, private route: ActivatedRoute) {}
+  mRegistration: Medicine =
+    {
+      p_Id: 0,
+      m_Name: '',
+      m_Type: '',
+      consumption_Rule: '',
+      m_Days: 0,
+    };
+
+  constructor(private studentService: StudentService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    
+
     this.route.queryParams.subscribe(params => {
       this.p1_Id = +params['prescriptionId'] || null;
-      
+
     });
   }
 
 
   @ViewChild('medicinetForm') medicinetForm!: NgForm;
   addMedicine() {
-    // Implement your logic here for adding medicine
-    console.log('Adding 11 medicine for prescription ID:',this.p1_Id);
+
     if (!this.p1_Id) {
       console.error('Prescription ID is not available.');
       return;
     }
-    this.mRegistration.p_Id = this.p1_Id;
-    this.studentService.saveMedicine(this.mRegistration)
-    .subscribe({
-      next: (medicine) => {
-        alert("medicine registration successful");
-        this.medicinetForm.resetForm();
-      }
-    });
+    if (this.mRegistration.consumption_Rule && this.mRegistration.m_Days && this.mRegistration.m_Name && this.mRegistration.m_Type) {
+      this.mRegistration.p_Id = this.p1_Id;
+      this.studentService.saveMedicine(this.mRegistration)
+        .subscribe({
+          next: (medicine) => {
+            alert("medicine registration successful");
+            this.medicinetForm.resetForm();
+          }
+        });
+    }
+    else {
+      alert("Somthings error...");
+    }
   }
 }

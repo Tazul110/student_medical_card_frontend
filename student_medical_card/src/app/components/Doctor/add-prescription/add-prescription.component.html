@@ -1,5 +1,5 @@
 <body style="background-color: #c9d6ff; min-height: 100vh;">
-    
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-6">
@@ -7,21 +7,22 @@
                     <h1 class="card-header text-center">Add Prescription</h1>
                     <div class="card-body">
                         <form #prescriptionForm="ngForm" (ngSubmit)="addPrescription()">
-                            
-                            
+
+
                             <div class="form-group">
                                 <label for="health_condition">health_condition</label>
-                                <input type="text" id="health_condition" name="health_condition" [(ngModel)]="pRegistration.health_condition" class="form-control" required>
-                            </div>
-    
-                           
-    
-                            <div class="form-group">
-                                <label for="prescribeBy">prescribeBy</label>
-                                <input type="text" id="prescribeBy" name="prescribeBy" [(ngModel)]="pRegistration.prescribeBy" class="form-control" required>
+                                <input type="text" id="health_condition" name="health_condition"
+                                    [(ngModel)]="pRegistration.health_condition" class="form-control" required>
                             </div>
 
-                            
+
+
+                            <!-- <div class="form-group">
+                                <label for="prescribeBy">prescribeBy</label>
+                                <input type="text" id="prescribeBy" name="prescribeBy" [(ngModel)]="pRegistration.prescribeBy" class="form-control" required>
+                            </div> -->
+
+
                             <button type="submit" class="btn btn-primary btn-block">Submit</button>
                         </form>
                     </div>
@@ -29,9 +30,9 @@
             </div>
         </div>
     </div>
-    
-    
-    
+
+
+
     <!-- {{employeeForm.value | json}} -->
 
 </body>

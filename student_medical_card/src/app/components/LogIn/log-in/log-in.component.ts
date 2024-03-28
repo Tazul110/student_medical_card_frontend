@@ -46,8 +46,7 @@ export class LogInComponent {
       .subscribe(
         student => {
           if (student) {
-            //console.log(student.userName);
-            alert("Logged In successfully....");
+            
             //localStorage.setItem('angular17token', student.token)
             localStorage.setItem('angular17token', JSON.stringify(student));
             
