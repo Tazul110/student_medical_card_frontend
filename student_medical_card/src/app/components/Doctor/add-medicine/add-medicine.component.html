@@ -1,5 +1,5 @@
 <body style="background-color: #c9d6ff; min-height: 100vh;">
-    
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-6">
@@ -7,34 +7,38 @@
                     <h1 class="card-header text-center">Add Medicine</h1>
                     <div class="card-body">
                         <form #medicinetForm="ngForm" (ngSubmit)="addMedicine()">
-                            
-                            
+
+
                             <div class="form-group">
                                 <label for="medicinetName">Medicine Name</label>
-                                <input type="text" id="medicinetName" name="medicinetName" [(ngModel)]="mRegistration.m_Name" class="form-control" required>
+                                <input type="text" id="medicinetName" name="medicinetName"
+                                    [(ngModel)]="mRegistration.m_Name" class="form-control" required>
                             </div>
-    
-                           
-    
+
+
+
                             <div class="form-group">
                                 <label for="m_Type">m_Type</label>
-                                <select id="m_Type" name="m_Type" [(ngModel)]="mRegistration.m_Type" class="form-control" required>
+                                <select id="m_Type" name="m_Type" [(ngModel)]="mRegistration.m_Type"
+                                    class="form-control" required>
                                     <option value="" disabled selected>Select m_Type</option>
                                     <option value="Capsul">Capsul</option>
-                                    <option value="sirup">sirup</option>
+                                    <option value="syrup">syrup</option>
                                     <option value="tablet">tablet</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="consumption_Rule">consumption_Rule</label>
-                                <input type="text" id="consumption_Rule" name="consumption_Rule" [(ngModel)]="mRegistration.consumption_Rule" class="form-control" required>
+                                <input type="text" id="consumption_Rule" name="consumption_Rule"
+                                    [(ngModel)]="mRegistration.consumption_Rule" class="form-control" required>
                             </div>
-      
+
                             <div class="form-group">
                                 <label for="m_Days">consumption_Days</label>
-                                <input type="text" id="m_Days" name="m_Days" [(ngModel)]="mRegistration.m_Days" class="form-control" required>
+                                <input type="text" id="m_Days" name="m_Days" [(ngModel)]="mRegistration.m_Days"
+                                    class="form-control" required>
                             </div>
-    
+
                             <button type="submit" class="btn btn-primary btn-block">Submit</button>
                         </form>
                     </div>
@@ -42,9 +46,9 @@
             </div>
         </div>
     </div>
-    
-    
-    
+
+
+
     <!-- {{employeeForm.value | json}} -->
 
 </body>

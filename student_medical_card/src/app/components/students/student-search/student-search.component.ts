@@ -11,6 +11,8 @@ import { NgForm } from '@angular/forms';
 export class StudentSearchComponent implements OnInit {
   studentId: number | null = null; // Declare studentId property
   studentById: any = null;
+  studentCode: any = null; // Add studentCode property
+  studentImageUrl: any = null; // Add studentImageUrl property
 
   constructor(private studentService: StudentService, private router: Router, private route: ActivatedRoute) { }
 
@@ -26,7 +28,6 @@ export class StudentSearchComponent implements OnInit {
 
   @ViewChild('searchForm') searchForm!: NgForm;
   search() {
-    console.log("in S-search class")
     this.studentById = null; // Reset studentById before each search
     if (this.studentId) {
       this.studentService.getStudentById(this.studentId)
@@ -34,6 +35,7 @@ export class StudentSearchComponent implements OnInit {
           student => {
             if (student) {
               this.studentById = student;
+              this.searchImage();
               this.searchForm.resetForm();
             } else {
               alert("Not Found");
@@ -48,12 +50,31 @@ export class StudentSearchComponent implements OnInit {
     }
   }
 
+  searchImage(): void {
+    if (this.studentId) {
+      this.studentImageUrl = null;
+      this.studentService.getImage(this.studentId)
+        .subscribe(
+          imageUrl => {
+            if (imageUrl !== 'Not Found') {
+              this.studentImageUrl = imageUrl;
+            } else {
+              console.error('Image not found for student code:', this.studentId);
+            }
+          },
+          error => {
+            console.error('Error fetching image URL:', error);
+          }
+        );
+    } else {
+      console.error('Please provide a student code.');
+    }
+  }
 
   addMedicine(prescriptionId: number) {
     // Implement your logic here for adding medicine
     console.log('Add medicine button clicked for prescription ID:', prescriptionId);
     if (prescriptionId) {
-
       // Navigate to '/sea' with studentId as a query parameter
       this.router.navigate(['/medicine'], { queryParams: { prescriptionId: prescriptionId } });
     } else {
@@ -62,14 +83,22 @@ export class StudentSearchComponent implements OnInit {
   }
 
   addPrescription(id: number) {
-
     if (id) {
-
       // Navigate to '/sea' with studentId as a query parameter
       this.router.navigate(['/prescription'], { queryParams: { s_Id: id } });
-
     } else {
       alert("Somethings error"); // Provide feedback if no student ID is entered
     }
+  }
+
+  calculateAge(birthDate: string): number {
+    const today = new Date();
+    const dob = new Date(birthDate);
+    let age = today.getFullYear() - dob.getFullYear();
+    const monthDiff = today.getMonth() - dob.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+      age--;
+    }
+    return age;
   }
 }

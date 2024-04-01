@@ -1,6 +1,4 @@
-
-
-<body  style="background-color: #c9d6ff; min-height: 100vh;">
+<body style="background-color: #c9d6ff; min-height: 100vh;">
   <div class="container">
     <!-- <h2>Search Student</h2> -->
     <!-- //<form class="search-form" #searchForm="ngForm" (ngSubmit)="search()"> -->
@@ -11,59 +9,73 @@
     </form> -->
 
 
-
     <div *ngIf="studentById" class="student-details">
       <h3>Student Details</h3>
       <div class="detail">
-        <p><strong>ID:</strong> {{ studentById.s_Id }}</p>
-        <p><strong>Name:</strong> {{ studentById.s_Name }}</p>
-        <p><strong>Dept:</strong> {{ studentById.s_Dept }}</p>
-        <p><strong>Email:</strong> {{ studentById.s_Email }}</p>
-        <p><strong>Birth_date:</strong> {{ studentById.b_Date }}</p>
+        <div class="row">
+          <div class="col-md-8">
+            <p><strong>ID: {{ studentById.s_Id }}</strong></p>
+            <p><strong>Name: {{ studentById.s_Name }}</strong></p>
+            <p><strong>Dept: {{ studentById.s_Dept }}</strong></p>
+            <p><strong>Email: {{ studentById.s_Email }}</strong></p>
+            <p><strong>Birth_date: {{ studentById.b_Date |
+                date:'MM/dd/yyyy'}}</strong></p>
+            <p><strong>Age: {{ calculateAge(studentById.b_Date) }} years</strong></p>
+          </div>
+          <div class="col-md-4">
+            <img *ngIf="studentImageUrl" [src]="studentImageUrl.image" class="img-fluid rounded-start large-image"
+              alt="Student Image">
+          </div>
+
+        </div>
       </div>
+
+
 
       <button class="add-button" (click)="addPrescription(studentById.s_Id)">
         +
       </button>
 
-      <h3>Prescriptions</h3>
+
+      <h3 style="text-align: center; margin-top: 70px;">Prescriptions</h3>
       <div *ngFor="let prescription of studentById.listPrescription" class="prescription">
-         <div class="prescription-card">
-             <div class="">
-               <p><strong >Prescription ID:</strong> {{ prescription.p_Id }}</p>
-               <p><strong style="color: green;">Health Condition:</strong> {{ prescription.health_condition }}</p>
-               <!-- <p><strong>Prescribed By:</strong> {{ prescription.prescribeBy }}</p> -->
-               <!-- <p><strong>Prescribe Date Time:</strong> {{ prescription.prescribe_date_time }}</p> -->
-             </div>
-           
-             <table class="medicine-table">
-               <thead>
-                 <tr>
-                   <th>Medicine ID</th>
-                   <th>Medicine Name</th>
-                   <th>Medicine Type</th>
-                   <th>Consumption Rule</th>
-                   <th>Days</th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr *ngFor="let medicine of prescription.listMedicine" class="medicine">
-                   <td>{{ medicine.m_Id }}</td>
-                   <td>{{ medicine.m_Name }}</td>
-                   <td>{{ medicine.m_Type }}</td>
-                   <td>{{ medicine.consumption_Rule }}</td>
-                   <td>{{ medicine.m_Days }}</td>
-                 </tr>
-               </tbody>
-               
-             </table>
-             <button type="button" class="btn btn-success" (click)="addMedicine(prescription.p_Id)"><span>+</span></button>
+        <div class="prescription-card">
+          <div class="">
+            <p><strong>Prescription ID:</strong> {{ prescription.p_Id }}</p>
+            <p><strong style="color: green;">Health Condition:</strong> {{ prescription.health_condition }}</p>
+            <!-- <p><strong>Prescribed By:</strong> {{ prescription.prescribeBy }}</p> -->
+            <!-- <p><strong>Prescribe Date Time:</strong> {{ prescription.prescribe_date_time }}</p> -->
+          </div>
 
-             <p><strong>Prescribed By:</strong> {{ prescription.prescribeBy }}</p>
-             <p style="text-align: center;"><strong>Prescribed Date :</strong> {{ prescription.prescribe_date_time | date:'MM/dd/yyyy'}}</p>
+          <table class="medicine-table">
+            <thead>
+              <tr>
+                <th>Medicine ID</th>
+                <th>Medicine Name</th>
+                <th>Medicine Type</th>
+                <th>Consumption Rule</th>
+                <th>Days</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let medicine of prescription.listMedicine" class="medicine">
+                <td>{{ medicine.m_Id }}</td>
+                <td>{{ medicine.m_Name }}</td>
+                <td>{{ medicine.m_Type }}</td>
+                <td>{{ medicine.consumption_Rule }}</td>
+                <td>{{ medicine.m_Days }}</td>
+              </tr>
+            </tbody>
 
-           </div>
-           
+          </table>
+          <button type="button" class="btn btn-success" (click)="addMedicine(prescription.p_Id)"><span>+</span></button>
+
+          <p><strong>Prescribed By:</strong> {{ prescription.prescribeBy }}</p>
+          <p style="text-align: center;"><strong>Prescribed Date :</strong> {{ prescription.prescribe_date_time |
+            date:'MM/dd/yyyy'}}</p>
+
+        </div>
+
         <div *ngIf="!prescription.listMedicine || prescription.listMedicine.length === 0" class="no-medicine">
           <p>No medicines prescribed</p>
         </div>
@@ -71,5 +83,5 @@
     </div>
   </div>
 
-  
+
 </body>

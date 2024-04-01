@@ -17,7 +17,6 @@ export class AddPrescriptionComponent implements OnInit {
     // Read studentId from query parameters when component initializes
     this.route.queryParams.subscribe(params => {
       this.s1_Id = +params['s_Id'] || null;
-
     });
   }
 
@@ -43,7 +42,6 @@ export class AddPrescriptionComponent implements OnInit {
     if (loggedInDoctor) {
       const doctor = JSON.parse(loggedInDoctor);
       this.pRegistration.prescribeBy = doctor.userName;
-      alert(doctor.userName);
     }
 
 
