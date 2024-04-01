@@ -16,6 +16,7 @@ import { routes } from './app-routing.module';
 import { customInterceptor } from './services/custom.interceptor';
 import { AddPrescriptionComponent } from './components/Doctor/add-prescription/add-prescription.component';
 import { AddMedicineComponent } from './components/Doctor/add-medicine/add-medicine.component';
+import { StudentImageComponent } from './components/students/student-image/student-image.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { AddMedicineComponent } from './components/Doctor/add-medicine/add-medic
     ExampleComponent,
     AddPrescriptionComponent,
     AddMedicineComponent,
+    StudentImageComponent,
   
      
   ],

@@ -1,0 +1,26 @@
+<div>
+    <input type="file" (change)="onFileSelected($event)" accept="image/*">
+</div>
+<div>
+    <label for="studentCode">Student Code:</label>
+    <input type="text" id="studentCode" [(ngModel)]="studentCode">
+</div>
+<div>
+    <button (click)="uploadImage()">Upload Image</button>
+</div>
+
+
+
+<h2>Search Student</h2>
+<form class="search-form" #searchForm="ngForm" (ngSubmit)="searchImage()">
+
+    <label for="studentCode">Enter studentCode:</label>
+    <input type="text" id="studentCode" name="studentCode" [(ngModel)]="studentCode">
+    <button type="submit">Search</button>
+</form>
+
+
+<div *ngIf="studentImageUrl">
+    <h3>Image:</h3>
+    <img [src]="studentImageUrl.image" alt="Student Image">
+</div>

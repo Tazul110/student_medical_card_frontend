@@ -8,47 +8,52 @@ import { StudentSearchComponent } from './components/students/student-search/stu
 import { LogInComponent } from './components/LogIn/log-in/log-in.component';
 import { AddPrescriptionComponent } from './components/Doctor/add-prescription/add-prescription.component';
 import { AddMedicineComponent } from './components/Doctor/add-medicine/add-medicine.component';
+import { StudentImageComponent } from './components/students/student-image/student-image.component';
 
 
 export const routes: Routes = [
 
-{
-  path:'home',
-  component:HomePageComponent
-},
-{
-  path:'sRegistration',
-  component:StudentRegistrationComponent
-},
-{
-  path:'us',
-  component:UserResistrationComponent
-},
-{
-  
-  path:'allstudent',
-  component:StudentListComponent
-},
-{
-  path: '',
-  component:LogInComponent
-},
-{
-  path:'sea',
-  component:StudentSearchComponent
-},
-{
-  path:'login',
-  component:LogInComponent
-},
-{
-  path:'prescription',
-  component:AddPrescriptionComponent
-},
-{
-  path:'medicine',
-  component:AddMedicineComponent
-}
+  {
+    path: 'home',
+    component: HomePageComponent
+  },
+  {
+    path: 'sRegistration',
+    component: StudentRegistrationComponent
+  },
+  {
+    path: 'us',
+    component: UserResistrationComponent
+  },
+  {
+
+    path: 'allstudent',
+    component: StudentListComponent
+  },
+  {
+    path: '',
+    component: LogInComponent
+  },
+  {
+    path: 'sea',
+    component: StudentSearchComponent
+  },
+  {
+    path: 'login',
+    component: LogInComponent
+  },
+  {
+    path: 'prescription',
+    component: AddPrescriptionComponent
+  },
+  {
+    path: 'medicine',
+    component: AddMedicineComponent
+  },
+  {
+    path: 'simage',
+    component: StudentImageComponent
+  }
 ];
 
 @NgModule({

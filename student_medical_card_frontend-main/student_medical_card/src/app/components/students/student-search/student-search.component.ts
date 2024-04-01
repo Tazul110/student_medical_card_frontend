@@ -12,7 +12,7 @@ export class StudentSearchComponent implements OnInit {
   studentId: number | null = null; // Declare studentId property
   studentById: any = null;
 
-  constructor(private studentService: StudentService, private router: Router, private route: ActivatedRoute) {}
+  constructor(private studentService: StudentService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     // Read studentId from query parameters when component initializes
@@ -48,27 +48,26 @@ export class StudentSearchComponent implements OnInit {
     }
   }
 
-  
+
   addMedicine(prescriptionId: number) {
     // Implement your logic here for adding medicine
     console.log('Add medicine button clicked for prescription ID:', prescriptionId);
     if (prescriptionId) {
-      
+
       // Navigate to '/sea' with studentId as a query parameter
-      this.router.navigate(['/medicine'], { queryParams: { prescriptionId: prescriptionId }});
+      this.router.navigate(['/medicine'], { queryParams: { prescriptionId: prescriptionId } });
     } else {
       alert("Please enter a prescriptionId"); // Provide feedback if no student ID is entered
     }
   }
 
-  addPrescription(id:number)
-  {
-    
+  addPrescription(id: number) {
+
     if (id) {
-      
+
       // Navigate to '/sea' with studentId as a query parameter
-      this.router.navigate(['/prescription'], { queryParams: { s_Id: id }});
-      
+      this.router.navigate(['/prescription'], { queryParams: { s_Id: id } });
+
     } else {
       alert("Somethings error"); // Provide feedback if no student ID is entered
     }
